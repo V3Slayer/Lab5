@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Lab5.Models.Person>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Person Details</h2>
+<h4>@ViewData["NoPerson"]</h4>
+<div>
+    <a asp-action="EnterPerson" class="btn btn-info">Add a Person</a>
+    @*<a href="EnterPerson" class="btn btn-info">Add a Person</a>*@
+</div>
+<hr />
+<div>
+    @if (Model != null)
+    {
+        @foreach (var item in Model)
+        {
+            <dl class="dl-horizontal">
+                <dt>
+                    First Name
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </dd>
+                <dt>
+                    Last Name
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </dd>
+                <dt>
+                    Birth Date
+                </dt>
+                <dd>
+                    @if(item.BirthDate != null)
+                    {
+                        DateTime temp = Convert.ToDateTime(item.BirthDate);
+                        item.BirthDate = temp.ToString("MMMM dd, yyyy");
+                    }
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </dd>
+                <dt>
+                    Age
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </dd>
+            </dl>
+            <hr />
+        }
+    }
+</div>

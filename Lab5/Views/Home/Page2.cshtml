@@ -1,0 +1,19 @@
+﻿@model  string[]
+
+@{
+    ViewData["Title"] = "Page2";
+}
+
+<h2>Language List</h2>
+<ol>
+    @foreach (var item in Model)
+    {
+        <li>@item</li>
+    }
+</ol>
+
+<h2>Boxes</h2>
+@for (int i = 1; i <= (int)ViewData["ID"]; i++)
+{
+    <div class="box">@i</div>
+}

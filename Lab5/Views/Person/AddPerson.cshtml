@@ -1,0 +1,36 @@
+﻿@model Lab5.Models.Person
+@{
+    ViewData["Title"] = "ShowPerson";
+}
+<h2>Person Created</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <strong><label>First Name</label></strong>
+            <div>@Model.FirstName</div>
+        </div>
+        <div class="form-group">
+            <strong><label>Last Name</label></strong>
+            <div>@Model.LastName</div>
+        </div>
+        <div class="form-group">
+            <strong><label>Birth Date</label></strong>
+            @if (Model.BirthDate != null)
+            {
+                DateTime temp = Convert.ToDateTime(Model.BirthDate);
+                Model.BirthDate = temp.ToString("MMMM dd, yyyy");
+            }
+            <div>@Model.BirthDate</div>
+        </div>
+        <div class="form-group">
+            <strong><label>Age</label></strong>
+            <div>@Model.Age</div>
+        </div>
+        <div>
+            <a asp-action="EnterPerson" class="btn btn-info">Add Another Person</a>
+            <a asp-action="Index" class="btn btn-default">Back to List</a>
+        </div>
+    </div>
+</div>
+
