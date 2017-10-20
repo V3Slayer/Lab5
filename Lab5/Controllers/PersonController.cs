@@ -25,8 +25,12 @@ namespace Lab5.Controllers
         //    }
         }
 
-        public IActionResult Index()
+        public IActionResult Index(String id)
         {
+            if (id == "Delete" && People.Count() > 0)
+            {
+                People.RemoveRange(0, People.Count());
+            }
             if (People.Count() == 0)
                 ViewData["NoPerson"] = "No person available";
             return View(People);
